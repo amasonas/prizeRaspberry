@@ -12,8 +12,8 @@ FROM
     SELECT "m"."year" AS "movie_year",
            "m"."id" AS "movie_id",
            "mp"."producers_id" AS "producer_id"
-    FROM "movie" "m"
-        JOIN "movie_producers" "mp"
+    FROM "movie_producers" "mp"
+       INNER JOIN "movie" "m"
             ON "m"."id" = "mp"."movie_id"
     WHERE "m"."winner" = true
 ) "pw"

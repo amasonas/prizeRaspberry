@@ -12,9 +12,11 @@ import java.util.stream.Collectors;
 public class StudioFactory {
 
     public List<StudioModel> fromCsv(String rawStudios) {
+        rawStudios = rawStudios.replaceAll(" and ", ",");
+
         return Arrays.stream(rawStudios.split(","))
                 .map(studio -> {
-                    return StudioModel.builder().name(studio.toUpperCase().trim()).build();
+                    return StudioModel.builder().name(studio.trim()).build();
                 })
                 .collect(Collectors.toList());
     }

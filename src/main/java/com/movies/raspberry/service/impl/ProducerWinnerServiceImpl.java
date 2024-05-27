@@ -20,8 +20,8 @@ public class ProducerWinnerServiceImpl implements ProducerWinnerService {
 
     @Override
     public ProducerPrizeInterval getProducersPrizeIntervals() {
-        List<ProducerWinner> maxInterval = repository.getProducersPrizeMaxIntervals();
         List<ProducerWinner> minInterval = repository.getProducersPrizeMinIntervals();
+        List<ProducerWinner> maxInterval = repository.getProducersPrizeMaxIntervals();
 
 
         return producerPrizeIntervalFactory.buildModel(maxInterval, minInterval);

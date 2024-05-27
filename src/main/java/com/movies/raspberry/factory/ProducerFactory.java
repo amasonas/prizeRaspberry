@@ -10,10 +10,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProducerFactory {
-    public List<ProducerModel> fromCsv(String rawStudios) {
-        return Arrays.stream(rawStudios.split(","))
+    public List<ProducerModel> fromCsv(String rawProducer) {
+        rawProducer = rawProducer.replaceAll(" and ", ",");
+
+        return Arrays.stream(rawProducer.split(","))
                 .map(studio -> {
-                    return ProducerModel.builder().name(studio.toUpperCase().trim()).build();
+                    return ProducerModel.builder().name(studio.trim()).build();
                 })
                 .collect(Collectors.toList());
     }
